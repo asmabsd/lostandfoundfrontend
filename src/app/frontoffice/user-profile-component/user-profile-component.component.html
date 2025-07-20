@@ -1,0 +1,40 @@
+<div class="container mt-5 profile-card">
+  <h2 class="text-center mb-4">👤 Mon Profil</h2>
+
+  <div class="card shadow-lg p-4">
+    <div class="text-center mb-3">
+      <img *ngIf="user.photo" [src]="'/api/v1/users/uploads/' + user.photo"
+           class="rounded-circle img-thumbnail profile-img" alt="Profile" />
+      <div>
+        <input type="file" (change)="onFileSelected($event)" class="form-control mt-2" />
+        <button (click)="uploadImage()" class="btn btn-secondary mt-2">📷 Mettre à jour la photo</button>
+      </div>
+    </div>
+
+    <form>
+      <div class="mb-3">
+        <label>Prénom</label>
+        <input class="form-control" [(ngModel)]="user.firstName" name="firstName" />
+      </div>
+      <div class="mb-3">
+        <label>Nom</label>
+        <input class="form-control" [(ngModel)]="user.lastName" name="lastName" />
+      </div>
+      <div class="mb-3">
+        <label>Email</label>
+        <input class="form-control" [(ngModel)]="user.email" name="email" disabled />
+      </div>
+      <div class="mb-3">
+        <label>CIN</label>
+        <input class="form-control" [(ngModel)]="user.cin" name="cin" />
+      </div>
+     
+      <div class="d-grid">
+        <button (click)="saveProfile()" class="btn btn-success">💾 Sauvegarder</button>
+      </div>
+    </form>
+
+    <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+  </div>
+</div>

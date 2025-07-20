@@ -1,0 +1,94 @@
+
+/* Dans votre fichier SCSS principal */
+.dropdown-menu-wide {
+  min-width: 300px; /* largeur minimale souhaitée */
+  border-radius: 8px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+  border: none !important;
+  padding: 10px 0 !important;
+
+  .dropdown-item {
+    font-size: 1.05rem;
+    transition: all 0.25s ease;
+    margin: 2px 8px;
+    border-radius: 6px;
+
+    &:hover {
+      background-color: #f0f7ff !important;
+      transform: translateX(5px);
+    }
+
+    i {
+      width: 200px;
+      text-align: center;
+    }
+  }
+
+  .dropdown-divider {
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+}
+.logout-btn {
+  background-color: #4ec3af; /* Vert Bootstrap */
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logout-btn:hover {
+  background-color: #4ec3af; /* Vert un peu plus foncé */
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.logout-btn i {
+  margin-right: 5px;
+}
+.user-email {
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  padding: 5px 12px;
+  font-weight: 600;
+  font-family: Arial, sans-serif;
+  border-radius: 12px;
+  user-select: text;
+  margin-right: 15px;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  height: 38px; /* pour centrer verticalement */
+}
+
+
+.user-email:hover {
+  background-color: #e2e6ea;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+.user-photo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-photo {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #4ec3af; /* Vert doux */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-photo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}

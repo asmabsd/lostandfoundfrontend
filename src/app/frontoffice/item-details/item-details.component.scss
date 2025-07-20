@@ -1,0 +1,52 @@
+.custom-card {
+  border: 1px solid #cce5cc;
+  border-radius: 12px;
+  background-color: #f6fff6;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 30px rgba(0, 128, 0, 0.15);
+  }
+
+  .card-title {
+    color: #2e7d32; // vert foncé
+  }
+
+  .card-body {
+    font-size: 1.05rem;
+  }
+
+  .card-footer {
+    padding: 0.75rem 1.25rem;
+  }
+}
+
+.btn-contact-owner {
+  background-color: #43a047;
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  padding: 8px 16px;
+  border: none;
+
+  &:hover {
+    background-color: #95bd97d2;
+    transform: translateY(-2px);
+    color: #fff;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(67, 160, 71, 0.4);
+  }
+}
+.btn-success {
+  background-color: #2e7d32;
+  border-color: #2e7d32;
+  font-weight: 600;
+}
+
+.btn-success:hover {
+  background-color: #1b5e20;
+  border-color: #1b5e20;
+}

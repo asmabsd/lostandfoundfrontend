@@ -1,0 +1,22 @@
+<!-- Floating AI Bot Button -->
+<div class="chatbot-container">
+  <div class="chat-icon" (click)="toggleChat()">
+    <img src="assets/botai.jpg" alt="AI Bot" />
+  </div>
+
+  <div class="chat-box" *ngIf="chatOpen">
+    <div class="chat-header">
+      <strong>Lost and found Smart Assistant</strong>
+      <button (click)="toggleChat()">✖</button>
+    </div>
+    <div class="chat-messages" #scrollMe>
+      <div *ngFor="let msg of messages" [ngClass]="{'user-msg': msg.from === 'user', 'bot-msg': msg.from === 'bot'}">
+        {{ msg.message }}
+      </div>
+    </div>
+    <div class="chat-input">
+      <input [(ngModel)]="userMessage" (keydown.enter)="sendMessage()" placeholder="Type your question..." />
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+</div>

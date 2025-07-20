@@ -1,0 +1,69 @@
+/* Alert animations */
+.alert {
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+    border-left-width: 7px;
+    
+    &.alert-success {
+      border-left-color: #71dd37;
+    }
+    
+    &.alert-danger {
+      border-left-color: #ff3e1d;
+    }
+    
+    &.alert-warning {
+      border-left-color: #ffab00;
+    }
+    
+    &.alert-info {
+      border-left-color: #03c3ec;
+    }
+  }
+  
+  /* Enhanced table hover effects */
+  .table-hover > tbody > tr:hover {
+    box-shadow: 0 2px 8px 0 rgba(67, 89, 113, 0.1);
+  }
+  
+  /* Enhanced buttons */
+  .btn-icon {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Badge styles */
+  .badge {
+    padding: 0.35em 0.65em;
+  }
+  
+  /* Modal customizations */
+  .modal-content {
+    border: 0;
+    box-shadow: 0 2px 16px 0 rgba(67, 89, 113, 0.45);
+  }
+  
+  /* Avatar styling */
+  .avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    &.avatar-md {
+      width: 48px;
+      height: 48px;
+    }
+    
+    .avatar-initial {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+  }

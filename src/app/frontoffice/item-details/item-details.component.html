@@ -1,0 +1,27 @@
+<div class="container mt-4" *ngIf="item">
+  <div class="card custom-card shadow">
+    <img *ngIf="item.photo" 
+         [src]="'/api/v1/items/uploads/' + item.photo" 
+         class="card-img-top rounded-top" 
+         style="max-height: 300px; object-fit: cover;" />
+    
+    <div class="card-body text-success">
+      <h3 class="card-title fw-bold">{{ item.type }}</h3>
+      <p class="card-text"><strong>Description:</strong> {{ item.description }}</p>
+      <p><strong>Location:</strong> {{ item.location }}</p>
+      <p><strong>Date:</strong> {{ item.date }}</p>
+    </div>
+    
+    <div class="card-footer d-flex justify-content-between align-items-center bg-light border-top-0">
+      <a routerLink="/frontoffice/start/match" class="btn btn-outline-secondary rounded-pill">
+        ⬅ Return
+      </a>
+
+    <!-- Bouton pour contacter l'utilisateur -->
+<button class="btn btn-success ms-2" (click)="contacterUtilisateur()">
+  💬 Contact {{ item.useremail }}
+</button>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,150 @@
+/* Couleurs principales */
+:root {
+  --primary-color: #45c3b8;
+  --secondary-color: #f5f8fa;
+  --text-dark: #2c3e50;
+  --text-light: #6c757d;
+  --accent-color: #ffc107;
+  --danger-color: #dc3545;
+  --info-color: #17a2b8;
+}
+
+/* Titres */
+h2, .card-title {
+  color: var(--text-dark);
+  font-weight: bold;
+}
+
+/* Boutons personnalisés */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.btn-primary:hover {
+  background-color: #3ab0a8;
+  border-color: #3ab0a8;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.btn-outline-info {
+  color: var(--info-color);
+  border-color: var(--info-color);
+}
+.btn-outline-info:hover {
+  background-color: var(--info-color);
+  color: white;
+}
+
+.btn-outline-warning {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+.btn-outline-warning:hover {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.btn-outline-danger {
+  color: var(--danger-color);
+  border-color: var(--danger-color);
+}
+.btn-outline-danger:hover {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+/* Formulaire */
+.form-control {
+  border-radius: 1rem;
+  box-shadow: none;
+  border: 1px solid #ced4da;
+}
+
+/* Cartes de réclamation */
+.card {
+  border-radius: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+.card-title {
+  font-size: 1.2rem;
+}
+
+/* Bande colorée sur le bord gauche */
+.border-start {
+  border-left: 4px solid var(--primary-color) !important;
+}
+
+/* Badge email */
+.badge-email {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.3rem 0.7rem;
+  border-radius: 1rem;
+  font-weight: 500;
+}
+
+/* Texte de motivation */
+.text-success {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #28a745 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card-footer button {
+    width: 100%;
+    margin-bottom: 0.3rem;
+  }
+}
+/* Bordure gauche turquoise harmonisée avec le branding */
+.card.border-start {
+  border-left: 6px solid #45c3b8 !important;
+  border-radius: 0.75rem;
+  background-color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Effet au survol */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Titre de carte : plus sombre et plus visible */
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Détails de réclamation : lisibles et aérés */
+.card-body p {
+  margin-bottom: 0.4rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* Date : en gris clair pour discrétion */
+.card-body p:last-child {
+  color: #888;
+  font-style: italic;
+}
+
+/* Pied de carte avec alignement propre */
+.card-footer {
+  background-color: transparent;
+  border-top: none;
+  padding-top: 0.75rem;
+}

@@ -1,0 +1,101 @@
+<div class="container mt-4">
+  <h2 class="text-center">Liste of Items</h2>
+
+  <div class="text-end mb-3">
+    <button class="btn btn-primary" (click)="onAddClick()">➕ Add an Item</button>
+  </div>
+
+  <!-- Formulaire d'ajout/modification -->
+  <div *ngIf="showForm" class="card mb-4 p-3 form-card">
+    <form (ngSubmit)="onSubmit()" [formGroup]="itemForm">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Type" formControlName="type" required />
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Description" formControlName="description" />
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Lieu" formControlName="location" />
+        </div>
+        <div class="col-md-6">
+          <input type="date" class="form-control" formControlName="date" />
+        </div>
+
+         <!-- HIDDEN -->
+  <input type="hidden" formControlName="useremail">
+
+        <div class="col-md-6">
+          <select class="form-select" formControlName="status">
+            <option>FOUND</option>
+            <option>CLAIMED</option>
+            <option>RETURNED</option>
+          </select>
+        </div>
+      <div class="col-md-6">
+  <label>Image</label>
+  <input type="file" class="form-control" (change)="onFileSelected($event)">
+</div>
+      </div>
+
+      <div class="mt-3 d-flex justify-content-end gap-2">
+        <button class="btn btn-success" type="submit">
+          {{ formMode === 'add' ? 'Ajouter' : 'Modifier' }}
+        </button>
+        <button class="btn btn-secondary" type="button" (click)="cancelForm()">Annuler</button>
+      </div>
+    </form>
+  </div>
+<div class="mb-3">
+  Your current score: {{ user?.score || 0 }}
+</div>
+  <!-- Liste des items -->
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+<div *ngFor="let item of foundItems" class="col">
+      <div class="card h-100 shadow-sm">
+<img *ngIf="item.photo" 
+     [src]="'/api/v1/items/uploads/' + item.photo"
+     class="card-img-top"
+     alt="Image de l'objet"
+     style="height: 200px; object-fit: cover;">        <div class="card-body">
+          <h5 class="card-title">{{ item.type }}</h5>
+          <p class="card-text">{{ item.description }}</p>
+          <p><strong>Location:</strong> {{ item.location }}</p>
+          <p><strong>Date:</strong> {{ item.date }}</p>
+          <p><strong>Status:</strong> {{ item.status }}</p>
+<p>
+  <strong>Published By :</strong>
+  <ng-container *ngIf="item.useremail === currentUserEmail; else contactTemplate">
+    You
+  </ng-container>
+</p>
+
+<!-- Template affiché si ce n'est pas le user connecté -->
+<ng-template #contactTemplate>
+  <button class="btn btn-outline-success btn-sm"
+          (click)="contacterUtilisateur(item)"
+          title="Contacter le propriétaire par email">
+    📧 {{ item.useremail }}
+  </button>
+</ng-template>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+       <button class="btn btn-outline-primary btn-sm"
+        [disabled]="item.useremail !== currentUserEmail"
+        [title]="item.useremail !== currentUserEmail ? 'You can only edit your own objects' : ''"
+        (click)="onEdit(item)">
+  Edit
+</button>
+
+<button class="btn btn-outline-danger btn-sm"
+        [disabled]="item.useremail !== currentUserEmail"
+        [title]="item.useremail !== currentUserEmail ? 'You can only delete your own objects' : ''"
+        (click)="onDelete(item.id!)">
+  Delete
+</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

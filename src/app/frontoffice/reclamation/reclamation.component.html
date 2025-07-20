@@ -1,0 +1,79 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">List Of Your Claims</h2>
+
+  <div class="text-end mb-3">
+    <button class="btn btn-primary rounded-pill" (click)="openForm('add')">
+      ➕ Post a Claim
+    </button>
+    <p class="text-success mt-1">💡 There is always a chance to resolve a conflict
+ !</p>
+  </div>
+
+  <!-- Formulaire -->
+  <div *ngIf="showForm" class="card p-4 shadow-lg mb-4 bg-white border-0 rounded-4">
+  <h4 class="text-primary fw-bold mb-3">{{ formMode === 'add' ? '➕Post a Claim' : '✏️ Edit The Claim' }}</h4>
+
+  <form [formGroup]="reclamationForm" (ngSubmit)="onSubmit()">
+    <div class="row gy-3">
+      <input type="hidden" formControlName="senderUserEmail" />
+
+ <div class="col-md-12 position-relative">
+  <label class="form-label fw-semibold">Reason</label>
+  <div class="input-group">
+    <input
+      type="text"
+      class="form-control rounded-pill shadow-sm pe-5"
+      placeholder="Reason Of The Claim"
+      formControlName="reason"
+      required
+    />
+    <!-- 👇 Bouton AI -->
+    <button
+      type="button"
+      class="btn position-absolute end-0 top-0 mt-1 me-2 p-0 border-0 bg-transparent text-muted"
+      style="z-index: 10;"
+      (click)="onReasonChange()"
+    >
+      🤖
+    </button>
+  </div>
+  <small class="text-muted ms-1">Generate the reason with AI</small>
+</div>
+
+
+
+      <div class="col-md-12">
+        <label class="form-label fw-semibold">Details</label>
+        <textarea class="form-control rounded-3 shadow-sm" placeholder="Describe The Problem" formControlName="details" rows="3" required></textarea>
+      </div>
+    </div>
+
+    <div class="mt-4 text-end">
+      <button class="btn btn-success rounded-pill px-4 me-2 shadow" type="submit">
+        {{ formMode === 'add' ? 'Send ✉️' : 'Update 🔁' }}
+      </button>
+      <button class="btn btn-secondary rounded-pill px-4 shadow-sm" type="button" (click)="cancelForm()">Cancel</button>
+    </div>
+  </form>
+</div>
+
+  <!-- Cartes des réclamations -->
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div *ngFor="let r of reclamations" class="col">
+      <div class="card h-100 shadow-sm border-start border-4 border-primary">
+        <div class="card-body">
+          <h5 class="card-title text-primary">📩 {{ r.reason }}</h5>
+          <p><strong>De :</strong> {{ r.senderUserEmail }}</p>
+          <p><strong>À :</strong> {{ r.targetUserEmail }}</p>
+          <p><strong>Détails :</strong> {{ r.details }}</p>
+          <p><strong>Date :</strong> {{ r.createdAt | date:'short' }}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <button class="btn btn-outline-info btn-sm" (click)="downloadPdf(r)">📄 PDF</button>
+          <button class="btn btn-outline-warning btn-sm" (click)="openForm('edit', r)">✏️ Edit</button>
+          <button class="btn btn-outline-danger btn-sm" (click)="delete(r.id!)">🗑️ Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
